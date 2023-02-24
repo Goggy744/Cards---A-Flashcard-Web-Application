@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block head %}
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/review.css">
+{% endblock %}
+{% block title %}Review{% endblock %}
+{% block section %} 
+    <div class="section-wrapper">
+        <div class="review-section">
+            <div class="deck-title">{{deck.title}}</div>
+            {% for card in cards %}
+                {% if loop.index == 1 %}
+                <div class="card-item-wrapper displayed" id="{{loop.index}}">
+                    <div class="card-item">
+                        <div class="card-inner">
+                            <div class="card-text question">{{card.question}}</div>
+                            <div class="card-text answer hide">{{card.answer}}</div>
+                        </div>
+                    </div>
+                    <div class="menu">
+                        <button class="prev" onclick="prev({{loop.index}})">
+                            <iconify-icon icon="bi:arrow-left-circle" width="40" height="40"></iconify-icon>
+                        </button>
+                        <button class="failed" onclick="checkAnswer(this, {{card.id}})">
+                            <iconify-icon icon="bi:x-circle" width="40" height="40"></iconify-icon>
+                        </button>
+                        <button class="passed" onclick="checkAnswer(this, {{card.id}})" >
+                            <iconify-icon icon="bi:check-circle" width="40" height="40"></iconify-icon>
+                        </button>
+                        <button class="next" onclick="next({{loop.index}})">
+                            <iconify-icon icon="bi:arrow-right-circle" width="40" height="40"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+                {% else %}
+                    <div class="card-item-wrapper hide" id="{{loop.index}}">
+                        <div class="card-item">
+                            <div class="card-inner">
+                                <div class="card-text question">{{card.question}}</div>
+                                <div class="card-text answer hide">{{card.answer}}</div>
+                            </div>
+                        </div><div class="menu">
+                            <button class="prev" onclick="prev({{loop.index}})">
+                                <iconify-icon icon="bi:arrow-left-circle" width="40" height="40"></iconify-icon>
+                            </button>
+                            <button class="failed" onclick="checkAnswer(this, {{card.id}})">
+                                <iconify-icon icon="bi:x-circle" width="40" height="40"></iconify-icon>
+                            </button>
+                            <button class="passed" onclick="checkAnswer(this, {{card.id}})" >
+                                <iconify-icon icon="bi:check-circle" width="40" height="40"></iconify-icon>
+                            </button>
+                            <button class="next" onclick="next({{loop.index}})">
+                                <iconify-icon icon="bi:arrow-right-circle" width="40" height="40"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <button class="stop" onclick="stop({{deck.id}})">Stop</button>
+            <div class="score hide" id="score">
+                {% for card in cards %}
+                <div id="card-{{card.id}}"></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/review.js"></script>
+    <script src="/static/js/inventory.js"></script>
+{% endblock %} 

@@ -1,0 +1,130 @@
+:root{
+    --main-color:#A1E1FF;
+    --accent-color:#E89A27;
+    --dark-background:rgba(0,0,0,.5);
+    --white-background:rgba(255,255,255,.5);
+}
+::placeholder{
+    color:black;
+}
+.deck-form{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 70%;
+}
+.card-form, .deck-information{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    row-gap: 8vh;
+}
+.card-list{
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    background-color: var(--white-background);
+    border-radius: 10px;
+    padding: 20px 30px 20px 0px;
+    font-size: 1em;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    overflow-y: auto;
+}
+.card-list-title{
+    padding: 0px 0px 20px 10px;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+.create-multiple-wrapper{
+    display: flex;
+}
+.create-multiple-wrapper label{
+    position: relative;
+    top: 2px;
+    font-size: 1em;
+    font-family: "Open Sans", sans-serif;
+    color: var(--main-color);
+}
+input.checkbox{
+    width: 3vw;
+    height: 3vh;
+}
+.card-list label{
+    position: relative;
+    top: -8px;
+}
+.title{
+    color: var(--main-color);
+    font-weight: 600;
+    font-family: 'Open-Sans', sans-serif;
+    font-size: 2.3em;
+    text-align: center;
+}
+.select-deck{
+    background-color: var(--white-background);
+    color: black;
+    font-family: 'Open-Sans', sans-serif;
+    border: none;
+    border-radius: 10px;
+    width: 20vw;
+    height: 5vh;
+    font-size: 1rem;
+}
+.card-input, .deck-input{
+    display: flex;
+    gap: 3vw;
+}
+.card-question, .card-answer{
+    background-color: var(--white-background);
+    font-family: 'Open-Sans', sans-serif;
+    font-size: 1em;
+    font-weight: lighter;
+    border: none;
+    border-radius: 10px;
+    width: 30vw;
+    height: 20vh;
+    padding: 10px;
+}
+.deck-title
+{
+    background-color: var(--white-background);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    font-weight: lighter;
+    border: none;
+    border-radius: 10px;
+    width: 25vw;
+    height: 5vh;
+    padding: 15px;
+}
+.deck-tag{
+    background-color: var(--white-background);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    font-weight: lighter;
+    border: none;
+    border-radius: 10px;
+    width: 15vw;
+    height: 5vh;
+    padding: 10px;
+}
+.create-btn{
+    font-family: 'Open-Sans', sans-serif;
+    font-weight: 600;
+    border:none;
+    background-color: var(--main-color);
+    border-radius: 16px;
+    cursor: pointer;
+    width: 16vw;
+    height: 8vh;
+    font-size: 1.3em;
+    position: relative;
+    bottom: -20px;
+}
+.create-btn:hover{
+    background-color: var(--accent-color);
+    transform: translateY(.5vh);
+}

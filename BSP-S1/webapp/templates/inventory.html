@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block head %}
+<link rel="stylesheet" href="/static/css/base.css">
+<link rel="stylesheet" href="/static/css/inventory.css">
+{% endblock%}
+{% block title %}Inventory{% endblock%}
+{% block section %}
+    <main class="inventory-wrapper">
+        <div class="cards-wrap">
+            {% for card in Card.query.filter_by(is_in_deck=False).all() %}
+                <div class="card-item" id="{{card.id}}">
+                    <div class="card-inner">
+                        <div class="card-text question">
+                            {{card.question}}
+                        </div>
+                        <div class="card-text answer hide">
+                            {{card.answer}}
+                        </div>
+                    </div>  
+                    <div class="card-menu">
+                        <a href="/delete-card/{{card.id}}">
+                            <iconify-icon icon="fluent:delete-16-filled" style="color: #ec5469;" width="30" height="30"></iconify-icon>
+                        </a>
+                        <a href="/edit-card/{{card.id}}">
+                            <iconify-icon icon="akar-icons:edit" style="color: #ffc242;" width="30" height="30"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+            {% for deck in Deck.query.all() %}
+                <div class="deck-item" id="{{deck.id}}">
+                    <div class="deck-inner">
+                        <div class="deck-tag1">
+                            {{deck.tag1}}
+                        </div>
+                        <div class="deck-title">
+                            {{deck.title}}
+                        </div>
+                        <div class="deck-tag2">
+                            {{deck.tag2}}
+                        </div>
+                    </div>  
+                    <div class="deck-menu">
+                        <a href="/delete-deck/{{deck.id}}">
+                            <iconify-icon icon="fluent:delete-16-filled" style="color: #ec5469;" width="30" height="30"></iconify-icon>
+                        </a>
+                        <a href="/edit-deck/{{deck.id}}">
+                            <iconify-icon icon="akar-icons:edit" style="color: #ffc242;" width="30" height="30"></iconify-icon>
+                        </a>
+                        <a href="/review-deck/{{deck.id}}">
+                            <iconify-icon icon="ant-design:read-filled" style="color: #70d7a3;" width="30" height="30"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+    <script src="/static/js/inventory.js"></script>
+{% endblock %}

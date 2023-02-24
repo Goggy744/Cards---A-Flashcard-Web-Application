@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block head%}
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/tools.css">
+{% endblock%}
+{% block title %} Create Deck {% endblock %}
+{% block section %}
+<h1 class="title">Create a Flashcard's Deck</h1>
+<form class="deck-form" method="POST">
+    <div class="deck-information">
+        <input type="text" class="deck-title" name="title" placeholder="Type the deck title ">
+        <div class="deck-input">
+            <input type="text" class="deck-tag" name="tag1" placeholder="Type the first tag">
+            <input type="text" class="deck-tag" name="tag2" placeholder="Type the second tag">
+        </div>
+        <button class="create-btn" type="submit">Create</button>
+    </div>
+    <div class="card-list">
+        <h4 class="card-list-title">Check the cards you want to add to the deck</h4>
+        {% for card in Card.query.filter_by(is_in_deck=False).all() %}
+        <div class="card-checkbox-item">
+            <input type="checkbox" name="{{card.id}}" id="{{card.id}}" class="checkbox">
+            <label for="{{card.id}}">{{card.question}}</label>
+        </div>
+        {% endfor %}
+    </div>
+</form>
+{% endblock %}

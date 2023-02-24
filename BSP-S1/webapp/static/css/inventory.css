@@ -1,0 +1,125 @@
+@import url(
+    'https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap'
+    );
+:root{
+    --main-color:#A1E1FF;
+    --accent-color:#E89A27;
+    --dark-background:rgba(0,0,0,.5);
+    --white-background:rgba(255,255,255,.5);
+    --green: #70D7A3;
+    --yellow:#FFC242;
+    --red:#EC5469;
+}
+.cards-wrap{
+    padding: 20px 0px 0px 6vw;
+    width: 100%;
+    height: 700px;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    column-gap: 2vw;
+    overflow-y: auto;
+    
+}
+.card-item, .deck-item{
+    width: 21%;
+    padding: 15px 25px;
+    height: 315px;
+}
+.deck-inner{
+    box-shadow: 0px 10px 12px 6px var(--white-background);
+}
+.card-inner{
+    background-color: var(--main-color);
+    border-radius: 10px;
+    min-width: 200px;
+    min-height: 315px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.deck-inner{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-between;
+    background-color: var(--main-color);
+    border-radius: 10px;
+    min-width: 200px;
+    min-height: 315px;
+    width: 100%;
+}
+.deck-tag1, .deck-tag2{
+    font-size: 1.2em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    padding: 10px;
+}
+.deck-title{
+    font-size: 1.5em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    color: var(--main-color);
+    background-color: var(--dark-background);
+    width: 100%;
+    text-align: center;
+    padding:20px 0px;
+}
+.card-text{
+    font-family: "Open Sans", sans-serif;
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--main-color);
+    background-color: var(--dark-background);
+    width: 100%;
+    text-align: center;
+    padding:20px 0px;
+}
+.card-menu, .deck-menu{
+    background-color: var(--dark-background);
+    width: 100%;
+    display: none;
+    justify-content: space-evenly;
+    border-radius: 0px 0px 10px 10px;
+    padding: 5px 0px;
+}
+.delete, .edit, .review{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.card-item:hover .card-inner, .deck-item:hover .deck-inner{
+    border-radius: 10px 10px 0px 0px;
+    min-height: 270px;
+}
+.card-item:hover .card-menu, .deck-item:hover .deck-menu{
+    display: flex;
+}
+.hide{
+    display: none;
+}
+@media screen and (max-width: 1024px){
+    .card-item{
+        width: 30%;
+    }
+    body, .card-wrapper{
+        overflow-x: hidden;
+    }
+
+}
+@media screen and (max-width: 768px){
+    .card-item{
+        width: 45%;
+    }
+    body, .card-wrapper{
+        overflow-x: hidden;
+    }
+}
+@media screen and (max-width: 540px){
+    .card-item{
+        width: 60%;
+    }
+    body, .card-wrapper{
+        overflow-x: hidden;
+    }
+}

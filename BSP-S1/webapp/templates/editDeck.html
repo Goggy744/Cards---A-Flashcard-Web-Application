@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block head%}
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/tools.css">
+{% endblock%}
+{% block title %} Edit Deck {% endblock %}
+{% block section %}
+<h1 class="title">Edit your deck</h1>
+<form class="deck-form" method="POST">
+    <div class="deck-information">
+        <input type="text" class="deck-title" name="title" value="{{deck.title}}">
+        <div class="deck-input">
+            <input type="text" class="deck-tag" name="tag1" value="{{deck.tag1}}">
+            <input type="text" class="deck-tag" name="tag2" value="{{deck.tag2}}">
+        </div>
+        <button class="create-btn" type="submit">Edit</button>
+    </div>
+    <div class="card-list">
+        <h4 class="card-list-title">Check the cards you want to add to the deck</h6>
+        {% for card in Card.query.filter_by(deck_id=deck.id).all() %}
+            <div class="card-checkbox-item">
+                <input type="checkbox" name="{{card.id}}" id="{{card.id}}" class="checkbox" checked>
+                <label for="{{card.id}}">{{card.question}}</label>
+            </div>
+        {% endfor %}
+        {% for card in Card.query.filter_by(is_in_deck=False).all() %}
+            <div class="card-checkbox-item">
+                <input type="checkbox" name="{{card.id}}" id="{{card.id}}" class="checkbox">
+                <label for="{{card.id}}">{{card.question}}</label>
+            </div>
+        {% endfor %}
+    </div>
+</form>
+{% endblock %}

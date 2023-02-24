@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block head %}
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+{% endblock %}
+{% block title %}Dashboard{% endblock %}
+{% block section %}
+    <div class="dashboard-section">
+        <div class="deck-reviewed">
+            <h1 class="section-title">Last reviewed deck</h1>
+            <div class="cards-wrap">
+                {% for deck in lastDeckRev %}
+                    <div class="deck-item" id="{{deck.id}}">
+                        <div class="deck-inner">
+                            <div class="deck-tag1">
+                                {{deck.tag1}}
+                            </div>
+                            <div class="deck-title">
+                                {{deck.title}}
+                            </div>
+                            <div class="deck-tag2">
+                                {{deck.tag2}}
+                            </div>
+                        </div>
+                        <div class="deck-menu">
+                            <a href="/delete-deck/{{deck.id}}">
+                                <iconify-icon icon="fluent:delete-16-filled" style="color: #ec5469;" width="30" height="30"></iconify-icon>
+                            </a>
+                            <a href="/edit-deck/{{deck.id}}">
+                                <iconify-icon icon="akar-icons:edit" style="color: #ffc242;" width="30" height="30"></iconify-icon>
+                            </a>
+                            <a href="/review-deck/{{deck.id}}">
+                                <iconify-icon icon="ant-design:read-filled" style="color: #70d7a3;" width="30" height="30"></iconify-icon>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="must-review">
+            <h1 class="section-title">Deck you must review</h1>
+            <div class="cards-wrap">
+                {% for deck in mustReview %}
+                    <div class="deck-item" id="{{deck.id}}">
+                        <div class="deck-inner">
+                            <div class="deck-tag1">
+                                {{deck.tag1}}
+                            </div>
+                            <div class="deck-title">
+                                {{deck.title}}
+                            </div>
+                            <div class="deck-tag2">
+                                {{deck.tag2}}
+                            </div>
+                        </div>
+                        <div class="deck-menu">
+                            <a href="/delete-deck/{{deck.id}}">
+                                <iconify-icon icon="fluent:delete-16-filled" style="color: #ec5469;" width="30" height="30"></iconify-icon>
+                            </a>
+                            <a href="/edit-deck/{{deck.id}}">
+                                <iconify-icon icon="akar-icons:edit" style="color: #ffc242;" width="30" height="30"></iconify-icon>
+                            </a>
+                            <a href="/review-deck/{{deck.id}}">
+                                <iconify-icon icon="ant-design:read-filled" style="color: #70d7a3;" width="30" height="30"></iconify-icon>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

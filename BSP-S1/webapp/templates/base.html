@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}
+        <link rel="stylesheet" href="/static/css/base.css">
+     {% endblock %}
+    <title>{% block title %}DinoCard Homepage{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-brand">
+            <img class="brand-logo" src="/static/images/flash-cards.png" alt="App Logo">
+            <h1 class="brand-title"><span class="accentued-brand-name">Cards</span></h1>
+        </div>
+        <ul class="navbar-main-links">
+            <li class="nav-link-wrap">
+                <iconify-icon icon="ic:outline-dashboard" style="color: #e89a27;" width="35" height="35"></iconify-icon>
+                <a class="nav-link" href="../dashboard">Dashboard</a>
+            </li>
+            <li class="tools-dropdown">
+                <button class="tools-btn">
+                    <iconify-icon icon="fluent:window-dev-tools-24-regular" style="color: #e89a27;" width="35" height="35"></iconify-icon>
+                    <p class="tools-link">Tools</p>
+                </button>
+                <div class="tools-dropdown-content">
+                    <a href="../createCard" class="tools-link nav-link">Create Card</a>
+                    <a href="../createDeck" class="tools-link nav-link">Create Deck</a>
+                </div>
+            </li>
+            <li class="nav-link-wrap">
+                <iconify-icon icon="mdi:cards-outline" style="color: #e89a27;" width="35" height="35"></iconify-icon>
+                <a class="nav-link" href="../inventory">Inventory</a>
+            </li>
+        </ul>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flask-message">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <section class="curve-wrapper">
+        <div class="curve">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+    <div class="curve-bottom"></div>
+
+    {% block section %}{% endblock%}
+
+    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+</body>
+</html>

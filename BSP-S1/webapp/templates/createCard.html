@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block head %}
+        <link rel="stylesheet" href="/static/css/base.css">
+        <link rel="stylesheet" href="/static/css/tools.css">
+{% endblock %}
+{% block title %} Create Card {% endblock %}
+{% block section %}
+<form class="card-form" method="POST">
+    <h1 class="title">Create a Flashcard</h1>
+    <select name="deck" id="deck" class="select-deck">
+        <option value="default" selected disabled>
+            Please Choose a deck
+        </option>
+        {% for deck in Deck.query.all() %}
+        <option value="{{deck.title}}">{{deck.title}}</option>
+        {% endfor %}
+        <option value="no-deck">No Deck</option>
+    </select>
+    <div class="card-input">
+        <textarea name="question" id="question" cols="30" rows="10" class="card-question" placeholder="Please type the flashcard's question"></textarea>
+        <textarea name="answer" id="answer" cols="30" rows="10" class="card-answer" placeholder="Please type the flashcard's answer"></textarea>
+    </div>
+    <button class="create-btn" type="submit">Create</button>
+    <div class="create-multiple-wrapper">
+        <input type="checkbox" name="create-multiple" id="create-multiple" class="checkbox">
+        <label for="create-multiple">Check if you want to create multiple cards</label>
+    </div>
+    
+</form>
+{% endblock %}

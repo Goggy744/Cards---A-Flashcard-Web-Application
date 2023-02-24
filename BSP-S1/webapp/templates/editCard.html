@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block head %}
+        <link rel="stylesheet" href="/static/css/base.css">
+        <link rel="stylesheet" href="/static/css/tools.css">
+{% endblock %}
+{% block title %} Edit Card {% endblock %}
+{% block section %}
+<form class="card-form" method="POST">
+    <h1 class="title">Edit your Flashcard</h1>
+    <select name="deck" id="deck" class="select-deck">
+        {% if card.is_in_deck == False %}
+            <option value="no-deck" selected>
+                No Deck
+            </option>
+            {% for deck in Deck.query.all() %}
+                <option value="{{deck.title}}">{{deck.title}}</option>
+            {% endfor %}
+        {% else %}
+            <option value="{{card.deck_id.title}}" selected>
+                {{card.deck_id.title}}
+            </option>
+            <option value="deck2">test5</option>
+            <option value="deck3">test3</option>
+            <option value="deck4">test2</option>
+            <option value="no-deck">No Deck</option>
+        {% endif %}
+       
+    </select>
+    <div class="card-input">
+        <textarea name="question" id="question" cols="30" rows="10" class="card-question">{{card.question}}</textarea>
+        <textarea name="answer" id="answer" cols="30" rows="10" class="card-answer">{{card.answer}}</textarea>
+    </div>
+    <button class="create-btn" type="submit">Edit</button>
+</form>
+{% endblock %}
